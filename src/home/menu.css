@@ -1,0 +1,17 @@
+.linkWrapper a {
+    display: block;
+    text-align: center;
+    padding: 5px;
+    border-right: 1px solid #ccc;
+}
+
+.linkWrapper a h4 {
+    line-height: 1;
+    margin-top: 5px;
+}   
+
+.active a h4,
+.active a svg {
+    color: yellow;
+}
+

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Toast, List, InputItem } from 'antd-mobile';
 // import { createForm } from 'rc-form';
+import { withRouter } from "react-router-dom";
+//服务的api
 import { loginAPI } from "../api/api.js"
 
 //提示框
@@ -26,13 +28,18 @@ class login extends Component {
         if(!username && !password) return 
 
         let params = {
-            username,
-            pw: password 
+            uname:　username,
+            pwd: password 
         }
         loginAPI(params).then(res => {
             let { meta } = res
             if(meta.status == 200) {
-
+                //获取路由的操作
+                const { history } = this.props
+                //存入localstorage
+                localStorage.setItem("myToken",res.data.token)
+                //路由跳转
+                history.push("/home")
             }else {
                 showToast("请输入正确的用户名或则密码")
             }
@@ -55,7 +62,7 @@ class login extends Component {
 
     return (
         <div>
-        {/* <List renderHeader={() => 'Format'}> */}
+        <List renderHeader={() => '登录'}>
             <InputItem
                 value={this.state.username}
                 onChange={this.handleUserName}
@@ -69,7 +76,7 @@ class login extends Component {
                 placeholder="****"
             >密码</InputItem>
             <Button type="primary" onClick={this.handleClick }>登录</Button>
-        {/* </List> */}
+        </List>
         </div>
     );
     }
@@ -77,4 +84,4 @@ class login extends Component {
 
 // const login = createForm()(Login);
 
-export default login;
+export default withRouter(login);

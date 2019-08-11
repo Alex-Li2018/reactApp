@@ -7,14 +7,18 @@ import {
   Redirect
 } from "react-router-dom";
 import './App.css';
+//导入axios拦截代码
+// import "./config/httpInterceptors.js"
 //导入组件
 import login from "./login/login.js"
+import Home from "./home/home.js"
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/login" component={login} />
+        <Route path="/" exact component={login} />
+        <Route path="/home" component={Home} />
         <Redirect to="/" />
       </Switch>
     </Router>
