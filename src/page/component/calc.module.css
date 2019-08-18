@@ -1,0 +1,28 @@
+.calc {
+    background: #ccc;
+}
+.calc .head-title {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    border-bottom: 1px solid #999;
+}
+
+.head-title .icon {
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    /* margin-top: 10px; */
+}
+
+.head-title .icon svg {
+    height: 50px;
+}
+
+.head-title span {
+    float: left;
+    margin-left: 70px;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+}

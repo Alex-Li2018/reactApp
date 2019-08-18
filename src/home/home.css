@@ -1,15 +1,4 @@
-.home-container {
-    position: absolute;
-    top: 0;
-    bottom: 60px;
-    width: 100%;
-    background-color: lightblue;
-}
-
-.home-bottom {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+.home-section .am-flexbox .am-flexbox-item {
+    border-bottom: none !important;
     height: 60px;
-    background-color: lightgreen;
 }

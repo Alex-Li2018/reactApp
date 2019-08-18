@@ -16,7 +16,7 @@ instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlenco
 // //axios请求,响应拦截的问题
 
 // //拦截所有的请求
-instance.interceptors.request.use(config => { console.log(config)
+instance.interceptors.request.use(config => { 
     // 在需要带上token数据的地方,加上token
     if(!config.url.endsWith('/login')){ //login接口不用加上token
       config.headers.Authorization = localStorage.getItem('myToken');

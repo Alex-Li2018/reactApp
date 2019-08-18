@@ -5,14 +5,17 @@ import './carousel.css'
 import { getSwiperAPI } from "../../api/api.js"
 
 class CarouselPage extends Component {
-  state = {
-    data: [],
-    imgHeight: 176,
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: [],
+      imgHeight: 176,
+    }
   }
+
   componentDidMount() {
     // simulate img loading
     getSwiperAPI({}).then(res => {
-      console.log(res)
       let { meta, data } = res
       if(meta.status == 200) {
         //处理原始数据
@@ -20,7 +23,7 @@ class CarouselPage extends Component {
         list.forEach((_,index) => {
           _.id = index
         })
-        console.log(list,res.data.list)
+        // console.log(list,res.data.list)
         this.setState({
           data: list
         })  

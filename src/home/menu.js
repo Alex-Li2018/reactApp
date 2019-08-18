@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
 import { Route, Link } from "react-router-dom";
-import "./menu.css"
+import styles  from "./menu.module.css"
 
 class Menu extends Component {
     render() {
-        const { to,slotName,current } = this.props
+        const { to,slotName,current,src } = this.props
         return (
             // <div>
             //     <Link to={to}>
@@ -19,10 +19,10 @@ class Menu extends Component {
                 exact={current}
                 // match表示是否接收到
                 children={({ match }) => (
-                <div className={`linkWrapper ${match ? "active" : ""}`}> 
+                <div className={`${styles['linkWrapper']} ${match ? styles['active'] : ""}`}> 
                     <Link to={to}>
-                        <Icon type="right" />
-                        <h4>{ slotName }</h4>
+                        <img className={styles["img-icon"]} src={src} />
+                        <div className={styles['title']}>{ slotName }</div>
                     </Link>
                 </div>
                 )}

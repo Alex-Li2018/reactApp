@@ -3,7 +3,7 @@ import axios from 'axios'
 //axios请求,响应拦截的问题
 (function(){
   //拦截所有的请求
-  axios.interceptors.request.use(config => { console.log(config)
+  axios.interceptors.request.use(config => { 
     // 在需要带上token数据的地方,加上token
     if(!config.url.endsWith('/login')){ //login接口不用加上token
       config.headers.Authorization = localStorage.getItem('myToken');
@@ -15,7 +15,7 @@ import axios from 'axios'
   })
 
   // 添加响应拦截器
-  axios.interceptors.response.use(function (response) { console.log(response)
+  axios.interceptors.response.use(function (response) { 
     // 对响应数据做点什么
     return response;
   }, function (error) {
