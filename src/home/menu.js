@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
-import { Icon } from 'antd-mobile';
+import PropTypes from 'prop-types';
+
 import { Route, Link } from "react-router-dom";
 import styles  from "./menu.module.css"
 
 class Menu extends Component {
+    //类型检测
+    static propTypes = {
+        to: PropTypes.string,
+        slotName: PropTypes.string,
+        current: PropTypes.bool,
+        src: PropTypes.string
+    }
+
     render() {
         const { to,slotName,current,src } = this.props
         return (

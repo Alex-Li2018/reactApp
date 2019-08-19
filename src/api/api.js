@@ -69,3 +69,17 @@ export function getMenuFaqAPI(params) {
             return res.data;
         })
 }
+
+//获取房源列表
+export function getHomeListAPI(params) {
+    let url = `homes/list`
+    let data = Object.assign({},params);
+    
+    return $Http.post(url,data)
+        .then(res => {
+            return res.data;
+        })
+        .catch(res => {
+            return res.data;
+        })
+}

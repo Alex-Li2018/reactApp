@@ -8,10 +8,7 @@ import './home.css'
 //引入路由
 import {
     BrowserRouter as Router,
-    Route,
-    Link,
-    Switch,
-    Redirect
+    Route
   } from "react-router-dom";
 
 //引入组件
@@ -24,6 +21,8 @@ import home from "../spritePng/home.png"
 import search from "../spritePng/search.png"
 import chat from "../spritePng/chat.png"
 import mine from "../spritePng/mine.png"
+//引入房源组件
+import HouseList from "../page/houseList.js"
 
 class Home extends Component {
     constructor(props) {
@@ -42,11 +41,14 @@ class Home extends Component {
         return (
             <div className={styles["home"]}>
                 <div className={styles["home-container"]}>
-                    {/* 路由填充位 */}
-                    <Route path="/home" component={Main} />
-                    <Route path="/home/chat" component={Chat} />
-                    <Route path="/home/info" component={Info} />
-                    <Route path="/home/mine" component={Mine} />
+                    <Router>
+                        {/* 路由填充位 */}
+                        <Route path="/home" component={Main} />
+                        <Route path="/houselist" component={HouseList}/>
+                        <Route path="/home/chat" component={Chat} />
+                        <Route path="/home/info" component={Info} />
+                        <Route path="/home/mine" component={Mine} />
+                    </Router>
                 </div>
                 <section className={`${styles["home-bottom"]} home-section`}>
                     <Flex>

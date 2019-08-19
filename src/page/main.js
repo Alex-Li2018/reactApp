@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//路由模块
+import { withRouter } from "react-router-dom";
 //导入服务
 import { getMenuAPI,getMenuInfoAPI,getMenuFaqAPI } from "../api/api.js"
 //导入轮播图的组件
@@ -62,18 +64,47 @@ class Main extends Component {
     }
 
     //隐藏计算器页面
-    hideCalc = (val) => {
-        console.log(val)
+    hideMenu = (val) => {
+
         let { menu_name: name } = val
-        if(name == "计算器") {
-            this.setState({
-                hideCalcFlag: true
-            })
-        }else {
-            this.setState({
-                hideCalcFlag: false
-            })
+        let { history } = this.props
+        switch(name) {
+            case "二手房": 
+                history.push('/houselist',{ params: { name: name,homeType: 1 } })
+            break;
+            case "新房": 
+                history.push('/houselist',{ params: { name: name,homeType: 2 } })
+            break;
+            case "租房": 
+                history.push('/houselist',{ params: { name: name,homeType: 3 } })
+            break;
+            case "海外": 
+                history.push('/houselist',{ params: { name: name,homeType: 3 } })
+            break;
+            case "地图找房": 
+                console.log(name)   
+            break;
+            case "查公交": 
+                console.log(name)
+            break;
+            case "计算器": 
+                this.setState({
+                    hideCalcFlag: true
+                })
+            break;
+            case "问答": 
+                console.log(name)
+            break;
         }
+        // if(name == "计算器") {
+        //     this.setState({
+        //         hideCalcFlag: true
+        //     })
+        // }else {
+        //     this.setState({
+        //         hideCalcFlag: false
+        //     })
+        // }
     }
 
     //传递给子组件的事件
@@ -90,7 +121,7 @@ class Main extends Component {
                     {/* 满足条件才渲染 */}
                     {props.menuList.length && props.menuList.map(val => (
                         <Flex.Item key={val.id}>
-                            <span onClick={ this.hideCalc.bind(this,val) } >{val.menu_name}</span>    
+                            <span onClick={ this.hideMenu.bind(this,val) } >{val.menu_name}</span>    
                         </Flex.Item>
                     ))}
                 </Flex>
@@ -164,4 +195,4 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default withRouter(Main);

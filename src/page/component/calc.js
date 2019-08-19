@@ -1,6 +1,6 @@
 // 计算器的页面
 import React, { Component } from 'react';
-import { Icon,Tabs,Badge } from 'antd-mobile';
+import { Icon,Tabs } from 'antd-mobile';
 import Charts from "./charts.js"
 import styles from "./calc.module.css"
 
@@ -35,7 +35,9 @@ class Calc extends Component {
                     onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                     >
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 'calc(100vh - 95px)', backgroundColor: '#fff' }}>
-                       <Charts />
+                        <div className={styles["charts-box"]}>
+                            <Charts />
+                        </div>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 'calc(100vh - 95px)', backgroundColor: '#fff' }}>
                         Content of second tab
